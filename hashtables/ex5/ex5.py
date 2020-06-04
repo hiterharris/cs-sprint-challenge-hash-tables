@@ -1,15 +1,17 @@
-# Your code here
-
-
-
 def finder(files, queries):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
+    q_dict = {}
+    result = []
+    for file in files:
+        last = file.split("/")[-1]
+        if last in q_dict:
+            q_dict[last].append(file)
+        else:
+            q_dict[last] = [file]
+    for query in queries:
+        if query in q_dict:
+            result += [file for file in q_dict[query]]
 
     return result
-
 
 if __name__ == "__main__":
     files = [
